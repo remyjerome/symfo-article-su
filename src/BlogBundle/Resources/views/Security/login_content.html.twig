@@ -1,0 +1,52 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+{#<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}
+    <!-- Main Form -->
+    <div class="login-form-1">
+        <form id="login-form" class="text-left" action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+            <div class="login-form-main-message"></div>
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="form-group">
+                        <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+                        <input type="text" class="form-control" id="username" name="_username" placeholder="username" value="{{ last_username }}" equired="required" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
+                        <input type="password" class="form-control" id="password" name="_password" placeholder="password" autocomplete="current-password">
+                    </div>
+                    <div class="form-group login-group-checkbox">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                </div>
+                <button type="submit" class="login-button" id="_submit" value="{{ 'security.login.submit'|trans }}"><i class="fa fa-chevron-right" ></i></button>
+            </div>
+            <div class="etc-login-form">
+                <p>forgot your password? <a href="#">click here</a></p>
+                <p>new user? <a href="#">create new account</a></p>
+            </div>
+        </form>
+    </div>
+    <!-- end:Main Form -->
